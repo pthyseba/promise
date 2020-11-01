@@ -146,7 +146,7 @@ namespace NPromise {
     Promise<taResolvedType>& operator=(const Promise<taResolvedType>& aOther)
     {
       if (this == &aOther)
-        return;
+        return *this;
     
       iCount = promiseCount++;
       std::lock_guard<std::mutex> l(aOther.iStatePtr->iMutex);
@@ -159,7 +159,7 @@ namespace NPromise {
     Promise<taResolvedType>& operator=(Promise<taResolvedType>&& aOther)
     {
       if (this == &aOther)
-        return;
+        return *this;
     
       iCount = promiseCount++;
       std::lock_guard<std::mutex> l(aOther.iStatePtr->iMutex);
